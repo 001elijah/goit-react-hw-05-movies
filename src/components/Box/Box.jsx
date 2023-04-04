@@ -1,10 +1,10 @@
-import s from './Box.module.scss';
+import { HeaderBox } from "./Box.style";
 
 const Box = ({ children }) => {
     return (
-        <div className={s.Box}>
+        <HeaderBox>
             { children }
-        </div>
+        </HeaderBox>
     );
 };
 
