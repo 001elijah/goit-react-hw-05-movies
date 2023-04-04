@@ -5,7 +5,7 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<AppBar />}></Route>
+        <Route path="goit-react-hw-05-movies/" element={<AppBar />}></Route>
       </Routes>
     </>
   );
