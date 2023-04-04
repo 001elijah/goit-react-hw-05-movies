@@ -1,7 +1,7 @@
 import Box from "components/Box/Box";
 import { Link } from "react-router-dom";
 
-import s from './AppBar.module.scss';
+// import s from './AppBar.module.scss';
 
 const navItems = [
     { href: "home", text: "Home" },
