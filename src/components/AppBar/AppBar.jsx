@@ -1,5 +1,5 @@
 import Box from "components/Box/Box";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // import s from './AppBar.module.scss';
 
@@ -11,7 +11,7 @@ const navItems = [
 const AppBar = () => {
     return (
     <Box>
-        {navItems.map(({ href, text }) => <Link to={href} key={href}>{text}</Link>)}
+        {navItems.map(({ href, text }) => <NavLink to={href} key={href}>{text}</NavLink>)}
     </Box>);
 };
 
