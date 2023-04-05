@@ -1,5 +1,5 @@
 import Box from "components/Box/Box";
-import { NavItem } from "./AppBar.styled";
+import { NavItem } from "./AppBar.style";
 
 const navItems = [
     { href: "goit-react-hw-05-movies", text: "Home" },
