@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom"
+import { Link, Outlet, useParams, useLocation, useNavigate } from "react-router-dom"
 import { getMovieDetails } from "services/tmdbAPI";
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
     const { movieId } = useParams();
     const [movie, setMovie] = useState([]);
+
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         getMovieDetails(movieId)
@@ -12,8 +15,14 @@ export const MovieDetails = () => {
             .catch(error => console.log(error));
     }, [movieId]);
 
+    const handleGoBack = () => {
+        const prevPageLocation = location.state;
+        navigate(prevPageLocation);
+    }
+
     return (
         <>
+            <button type="button" onClick={handleGoBack}>Go back</button>
             <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}` ?? null} alt={`${movie.title} Poster`} />
             <h1>{movie.title} ({movie.release_date?.slice(0, 4) ?? "unknown release year"})</h1>
             <p>User Score: {Math.floor(movie.vote_average)} / 10</p>
@@ -29,4 +38,6 @@ export const MovieDetails = () => {
             <Outlet />
         </>
     )
-}
+};
+
+export default MovieDetails;

@@ -28,13 +28,15 @@ export const searchMovieByQuery = (query) => {
     .then(result => result.data)
 }
 
-export const getMovieDetails = (id) => {
+export const getMovieDetails = (id, option = null) => {
     return axios
         // https://api.themoviedb.org/3/movie/76600?api_key=62b98c2ee90b8cb7c57f2d936e771a35
-        .get(`/3/movie/${id}`, {
-        params: {
-            api_key: API_KEY,
-        }
-        })
-    .then(result => result.data)
+        // https://api.themoviedb.org/3/movie/638974/credits?api_key=62b98c2ee90b8cb7c57f2d936e771a35 - cast
+        // https://api.themoviedb.org/3/movie/638974/reviews?api_key=62b98c2ee90b8cb7c57f2d936e771a35 - reviews
+        .get(`/3/movie/${id}${option ? `/${option}` : ''}`, {
+            params: {
+                api_key: API_KEY,
+            }
+            })
+            .then(result => result.data)
 }

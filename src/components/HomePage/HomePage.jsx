@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getFromTmdb } from 'services/tmdbAPI';
 
-export const HomePage = () => {
+const HomePage = () => {
     const [movies, setMovies] = useState([]);
+
+    const location = useLocation();
+
     useEffect(() => {
         getFromTmdb()
             .then(({ results }) => setMovies(results))
@@ -13,8 +16,10 @@ export const HomePage = () => {
         <>
             <h1>Trending Today</h1>
             <ul>
-                {movies.map(movie => <li key={movie.id}><Link to={`movies/${movie.id}`}>{movie.title}</Link></li>)}
+                {movies.map(movie => <li key={movie.id}><Link to={`movies/${movie.id}`} state={location}>{movie.title}</Link></li>)}
             </ul>
         </>
     );
 };
+
+export default HomePage;
